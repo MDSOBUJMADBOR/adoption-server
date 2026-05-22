@@ -29,7 +29,7 @@ async function run() {
     const db = client.db("PetAdoption");
     const coursesCollection = db.collection("courses");
     const requestCollection = db.collection("request");
-    const addpetCollection = db.collection("addpet");
+  
 
 
 app.get("/courses", async (req, res) => {
@@ -52,20 +52,20 @@ app.get("/feature", async (req, res) => {
 
  app.post("/request", async (req, res) => {
       const requestData = req.body;
-      console.log(requestData);
+      // console.log(requestData);
       const result = await requestCollection.insertOne(requestData);
       res.json(result);
     });
-
+ 
 
 app.get("/request", async (req, res) => {
-  const result = await requestCollection.find().toArray();
+  const result = await requestCollection.find().toArray();  
   res.json(result);
 })
 
  app.post("/courses", async (req, res) => {
       const addData = req.body;
-      console.log(addData);
+      // console.log(addData);
       const result = await coursesCollection.insertOne(addData);
       res.json(result);
     });
