@@ -55,14 +55,21 @@ app.get("/feature", async (req, res) => {
       // console.log(requestData);
       const result = await requestCollection.insertOne(requestData);
       res.json(result);
-    });
- 
+    }); 
 
 app.get("/request", async (req, res) => {
   const result = await requestCollection.find().toArray();  
   res.json(result);
-})
+});
 
+app.delete("/request/:id", async(req, res) => {
+  const id = req.params.id;
+  const query={
+_id: new ObjectId(id)
+  }
+  const result = await requestCollection.deleteOne(query)
+  res.send(result);
+});
 
  app.post("/courses", async (req, res) => {
       const addData = req.body;
@@ -70,6 +77,12 @@ app.get("/request", async (req, res) => {
       const result = await coursesCollection.insertOne(addData);
       res.json(result);
     });
+
+
+    
+
+
+
 
 
 
