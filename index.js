@@ -63,6 +63,7 @@ app.get("/request", async (req, res) => {
   res.json(result);
 })
 
+
  app.post("/courses", async (req, res) => {
       const addData = req.body;
       // console.log(addData);
